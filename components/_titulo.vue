@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
 h1#title {
   display: inline-block;
-  font-size: 5.625rem;
+  font-size: 3.7rem;
   font-family: $fontb;
   color: #fff;
   position: relative;
@@ -17,9 +17,9 @@ h1#title {
 
   img {
     position: absolute;
-    top: -8.75rem;
-    right: -7.15rem;
-    width: 9.313rem;
+    top: -5.95rem;
+    right: -5rem;
+    width: 6.25rem;
     min-width: unset !important;
   }
 }

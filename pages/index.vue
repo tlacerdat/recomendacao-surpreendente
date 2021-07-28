@@ -60,7 +60,7 @@ export default {
   background-position: center center;
 
   h4 {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
     margin-bottom: 0;
 
     strong {
@@ -82,7 +82,7 @@ export default {
   .inner {
     text-align: center;
     color: #fff;
-    padding: 13.5rem 0 9.5rem 0;
+    padding: 7.5rem 0 5.5rem 0;
   }
 }
 
