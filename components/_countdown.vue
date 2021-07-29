@@ -45,6 +45,7 @@ export default {
       timerInterval: null,
       timePassed: 0,
       displayBlueRing: true,
+      call: [{ id: '39jdjk', id_meet: 'ums-hufo-qgw', default: true }],
     }
   },
   computed: {
@@ -55,6 +56,7 @@ export default {
 
       if (this.timeLeft < 1) {
         this.displayBlueRingFunc()
+        this.redirectUser()
         return '00:00'
       }
       if (seconds < 10) {
@@ -99,6 +101,35 @@ export default {
       setTimeout(() => {
         this.displayBlueRing = false
       }, 1000)
+    },
+    redirectUser() {
+      setTimeout(() => {
+        const callId = this.getUrlParameter('call')
+        let searchedItem
+        if (callId && callId.length > 0) {
+          searchedItem = this.call.find((element) => element.id === callId)
+        }
+
+        if (searchedItem) {
+          window.location.href =
+            'https://meet.google.com/' + searchedItem.id_meet
+        } else if (!searchedItem && callId.length > 0) {
+          window.location.href =
+            'https://meet.google.com/' +
+            this.call.find((element) => element.default === true).id_meet
+        } else {
+          window.location.reload()
+        }
+      }, 1500)
+    },
+    getUrlParameter(name) {
+      // eslint-disable-next-line no-useless-escape
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
+      const results = regex.exec(location.search)
+      return results === null
+        ? ''
+        : decodeURIComponent(results[1].replace(/\+/g, ' '))
     },
   },
 }
